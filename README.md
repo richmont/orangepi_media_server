@@ -1,6 +1,22 @@
 # orangepi_media_server
 Configurações para meu servidor baseado em orangepi
 
+# Docker
+Usado para subir alguns dos serviços por questão de praticidade, é mais fácil copiar as configurações prontas com um arquivo yml que instalar tudo do zero.  
+
+## Instalando Docker
+
+
+## Configurando permissões para executar como usuário normal (não root)
+
+Fonte: https://stackoverflow.com/questions/48568172/docker-sock-permission-denied  
+```bash
+echo $USER # deverá ver seu nome de usuário, por exemplo, "rich"
+sudo usermod -aG docker $USER # adiciona seu usuário ao grupo "docker"
+# Refaça o login, saia do terminal e entre novamente, ou simplesmente reinicie
+sudo systemctl restart docker
+```
+
 # Jellyfin
 
 ### Copiando arquivos de configuração ao diretório correto
