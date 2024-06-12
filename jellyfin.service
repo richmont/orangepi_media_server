@@ -1,0 +1,15 @@
+[Unit]
+Description=Serviço para iniciar jellyfin a partir do docker
+After=data-hdd1.mount docker.service # inicia apenas se hdd estiver conectado e docker de pe
+
+[Service]
+User=rich
+WorkingDirectory=/var/jellyfin
+ExecStart=docker compose -f /var/jellyfin/jellyfin.yml up
+ExecStop=docker compose -f /var/jellyfin/jellyfin.yml down
+
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
