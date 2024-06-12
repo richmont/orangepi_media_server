@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    container_name: jellyfin
+    user: 1000:1000
+    network_mode: 'host'
+    volumes:
+      - /var/jellyfin/config:/config
+      - /var/jellyfin/cache:/cache
+      - type: bind
+        source: /data/hdd1/arquivos/midias/
+        target: /data/hdd1/arquivos/midias/
+      - type: bind
+        source: /data/hdd1/arquivos/torrent/
+        target: /data/hdd1/arquivos/torrent/
+    restart: 'unless-stopped'
+    # Optional - alternative address used for autodiscovery
+    environment:
+      - JELLYFIN_PublishedServerUrl=http://192.168.0.100
+    # Optional - may be necessary for docker healthcheck to pass if running in host network mode
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
