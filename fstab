@@ -1,0 +1,2 @@
+# Montagem automática do HD externo USB
+UUID=204f6a6b-cb18-41dc-9cce-4c62b553e11c       /data/hdd1      auto    auto,user,exec,rw,async,atime   0 1
